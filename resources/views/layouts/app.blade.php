@@ -54,41 +54,45 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i>
-                                    Logout
-                                </a>
+                             <li><a href="#"><i class="fa fa-user fa-fw"></i> My Profile</a>
+                             </li>
+                             <li>   <a href="#"><i class="fa fa-gear fa-fw"></i> Change Password</a>                                                   
+                             </li>
+                             <li>
+                                <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                                Logout
+                            </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                    @endif
-                </ul>
-            </div>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+            </ul>
         </div>
-    </nav>
-
-    <div class="container-fluid">
-        <div class="row">
-          @if(Auth::check())
-          <div class="col-sm-2">
-           @include ('partials.sidebar')    
-       </div>
-       <div class="col-sm-10">
-           @include('message.success')
-           @include('message.error-list')  
-           @yield('content') 
-       </div>
-       @else
-       <div class="col-sm-12">
-        @yield('content')
     </div>
-    @endif
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+      @if(Auth::check())
+      <div class="col-sm-2">
+       @include ('partials.sidebar')    
+   </div>
+   <div class="col-sm-10">
+       @include('message.success')
+       @include('message.error-list')  
+       @yield('content') 
+   </div>
+   @else
+   <div class="col-sm-12">
+    @yield('content')
+</div>
+@endif
 </div>
 </div>
 </div>
