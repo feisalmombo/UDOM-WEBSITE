@@ -37,20 +37,20 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-     $this->validate($request, [ 
+       $this->validate($request, [ 
         'name' => 'required',
         'email' => 'required|email|unique:users',
         'password' => 'required'
         ]);
 
-     $user = new User;
-     $user->name = $request->name;
-     $user->email = $request->email;
-     $user->password = bcrypt($request->password);
-     $user->save();
-     $request->session()->flash('msg-success', 'User has been Added Successful');
-     return redirect ('/users');
- }
+       $user = new User;
+       $user->name = $request->name;
+       $user->email = $request->email;
+       $user->password = bcrypt($request->password);
+       $user->save();
+       $request->session()->flash('msg-success', 'User has been Added Successful');
+       return redirect ('/users');
+   }
 
     /**
      * Display the specified resource.
@@ -60,9 +60,9 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-       $user = User::findOrFail($user->id);
-       return view('Dashboard.Users.show', compact('user'));
-   }
+     $user = User::findOrFail($user->id);
+     return view('Dashboard.Users.show', compact('user'));
+ }
 
     /**
      * Show the form for editing the specified resource.
