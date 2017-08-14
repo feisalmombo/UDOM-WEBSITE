@@ -5,5 +5,5 @@
   @if(Auth::user()->is_admin == true)
   <a class="list-group-item {{ request()->fullUrl() == url('/users') ? 'active' : '' }}" href="/users"><i class="fa fa-users" aria-hidden="true"></i>&nbsp; Users</a>
   @endif
-  <a class="list-group-item" href="#"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp; Settings</a>
+  <a class="list-group-item {{ request()->fullUrl() == url('#') ? 'active' : '' }}" href="#"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp; Settings</a>
 </div>
