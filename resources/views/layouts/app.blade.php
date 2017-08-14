@@ -46,8 +46,18 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                         <li><a href="{{ route('login') }}">Login</a></li>
-                        {{--<li><a href="{{ route('register') }}">Register</a></li> --}}
+                        <li><a href="{{ route('register') }}">Register</a></li> 
+
                         @else
+
+                        <li>
+                            @if(Auth::user()->image == null)
+                            <img src="/images/user.png" alt="" class="image-circle" width="45" height="50">
+                            @else
+                            <img src="/uploads/{{ Auth::user()->image }}" alt="" class="image-circle" width="45" height="50">
+                            @endif
+                        </li>
+
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>

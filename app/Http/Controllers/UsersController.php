@@ -129,4 +129,23 @@ class UsersController extends Controller
             return back();
         }
     }
+
+    public function userImage(Request $request, User $user)
+    {
+        $user = User::findOrFail($user->id);
+
+        if($request->hasFile('image')) // Capture file
+        {
+            if($request->file('image')->isValid()) //If file is Valid
+            {
+                $path = $request->image->store('images', 'uploads'); // Used to store path in images folder  and uploads folder
+                $user->image = $path;
+                $user->save(); 
+            }
+        }
+        //dd($user);
+        $request->session()->flash('msg-success', 'User change profile picture');
+
+        return back();
+    }
 }
