@@ -24,8 +24,11 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::post('/users/{user}/is-admin', 'UsersController@is_admin');
 	Route::resource('/posts', 'PostsController');
 
+	Route::post('/users/{user}/userImage', 'UsersController@userImage');
+
 
 	Route::group(['middleware' => 'isAdmin'], function(){
 		Route::post('/users/{user}/is-admin', 'UsersController@is_admin');
+		
 	});
 });		
